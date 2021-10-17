@@ -4,15 +4,16 @@ require_once 'Vehicle.php';
 
 class Truck extends Vehicle
 {
-    public const INITIAL_CARGO = 0;
-    private int $capacityStorage;
-    private int $cargo = self:: INITIAL_CARGO;
+   private int $capacityStorage = 350;
+    private int $cargo = 0;
 
-    public function __construct(int $capacityStorage, int $cargo)
+    public function __construct(int $capacityStorage, int $cargo, string $color, int $nbSeats)
     {
-        $this->color = $capacityStorage;
-        $this->nbSeats = $cargo;
+       parent::__construct($color, $nbSeats);
+        $this->setCapacityStorage($capacityStorage);
+        $this->setCargo($cargo);
     }
+
 
     public function getCapacityStorage(): int
     {
@@ -33,5 +34,12 @@ class Truck extends Vehicle
     {
         $this->cargo = $cargo;
     }
-
+    public function fullOrInFilling(): string
+    {
+        if ($this->fullOrInFilling =$this->getCapacityStorage()){
+            return "truck is full";
+        } else {
+            return 'The truck is in filling';
+        }
+    }  
 }
